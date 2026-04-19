@@ -1,0 +1,54 @@
+[
+  { "id": "csgo-weapon-case", "name": "CS:GO Weapon Case", "release_date": "2013-08-14T00:00:00Z", "drop_pool": "rare" },
+  { "id": "esports-2013-case", "name": "eSports 2013 Case", "release_date": "2013-08-14T00:00:00Z", "drop_pool": "rare" },
+  { "id": "operation-bravo-case", "name": "Operation Bravo Case", "release_date": "2013-09-19T00:00:00Z", "drop_pool": "discontinued" },
+  { "id": "csgo-weapon-case-2", "name": "CS:GO Weapon Case 2", "release_date": "2013-11-08T00:00:00Z", "drop_pool": "rare" },
+  { "id": "winter-offensive-weapon-case", "name": "Winter Offensive Weapon Case", "release_date": "2013-12-18T00:00:00Z", "drop_pool": "rare" },
+  { "id": "esports-2013-winter-case", "name": "eSports 2013 Winter Case", "release_date": "2013-12-18T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "csgo-weapon-case-3", "name": "CS:GO Weapon Case 3", "release_date": "2014-02-12T00:00:00Z", "drop_pool": "rare" },
+  { "id": "operation-phoenix-weapon-case", "name": "Operation Phoenix Weapon Case", "release_date": "2014-02-20T00:00:00Z", "drop_pool": "rare" },
+  { "id": "huntsman-weapon-case", "name": "Huntsman Weapon Case", "release_date": "2014-05-01T00:00:00Z", "drop_pool": "rare" },
+  { "id": "operation-breakout-weapon-case", "name": "Operation Breakout Weapon Case", "release_date": "2014-07-01T00:00:00Z", "drop_pool": "rare" },
+  { "id": "esports-2014-summer-case", "name": "eSports 2014 Summer Case", "release_date": "2014-07-10T00:00:00Z", "drop_pool": "rare" },
+  { "id": "operation-vanguard-weapon-case", "name": "Operation Vanguard Weapon Case", "release_date": "2014-11-11T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "chroma-case", "name": "Chroma Case", "release_date": "2015-01-08T00:00:00Z", "drop_pool": "rare" },
+  { "id": "chroma-2-case", "name": "Chroma 2 Case", "release_date": "2015-04-15T00:00:00Z", "drop_pool": "rare" },
+  { "id": "falchion-case", "name": "Falchion Case", "release_date": "2015-05-26T00:00:00Z", "drop_pool": "rare" },
+  { "id": "shadow-case", "name": "Shadow Case", "release_date": "2015-09-17T00:00:00Z", "drop_pool": "rare" },
+  { "id": "revolver-case", "name": "Revolver Case", "release_date": "2015-12-08T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "operation-wildfire-case", "name": "Operation Wildfire Case", "release_date": "2016-02-17T00:00:00Z", "drop_pool": "rare" },
+  { "id": "chroma-3-case", "name": "Chroma 3 Case", "release_date": "2016-04-27T00:00:00Z", "drop_pool": "rare" },
+  { "id": "gamma-case", "name": "Gamma Case", "release_date": "2016-06-15T00:00:00Z", "drop_pool": "rare" },
+  { "id": "gamma-2-case", "name": "Gamma 2 Case", "release_date": "2016-08-18T00:00:00Z", "drop_pool": "rare" },
+  { "id": "glove-case", "name": "Glove Case", "release_date": "2016-11-28T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "spectrum-case", "name": "Spectrum Case", "release_date": "2017-03-15T00:00:00Z", "drop_pool": "rare" },
+  { "id": "operation-hydra-case", "name": "Operation Hydra Case", "release_date": "2017-05-23T00:00:00Z", "drop_pool": "discontinued" },
+  { "id": "spectrum-2-case", "name": "Spectrum 2 Case", "release_date": "2017-09-14T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "clutch-case", "name": "Clutch Case", "release_date": "2018-02-14T00:00:00Z", "drop_pool": "active" },
+  { "id": "horizon-case", "name": "Horizon Case", "release_date": "2018-08-02T00:00:00Z", "drop_pool": "rare" },
+  { "id": "danger-zone-case", "name": "Danger Zone Case", "release_date": "2018-12-06T00:00:00Z", "drop_pool": "rare" },
+
+  { "id": "prisma-case", "name": "Prisma Case", "release_date": "2019-03-13T00:00:00Z", "drop_pool": "rare" },
+  { "id": "cs20-case", "name": "CS20 Case", "release_date": "2019-10-18T00:00:00Z", "drop_pool": "rare" },
+  { "id": "shattered-web-case", "name": "Shattered Web Case", "release_date": "2019-11-18T00:00:00Z", "drop_pool": "discontinued" },
+
+  { "id": "prisma-2-case", "name": "Prisma 2 Case", "release_date": "2020-03-31T00:00:00Z", "drop_pool": "active" },
+  { "id": "fracture-case", "name": "Fracture Case", "release_date": "2020-08-06T00:00:00Z", "drop_pool": "active" },
+  { "id": "operation-broken-fang-case", "name": "Operation Broken Fang Case", "release_date": "2020-12-03T00:00:00Z", "drop_pool": "discontinued" },
+
+  { "id": "snakebite-case", "name": "Snakebite Case", "release_date": "2021-05-03T00:00:00Z", "drop_pool": "active" },
+  { "id": "operation-riptide-case", "name": "Operation Riptide Case", "release_date": "2021-09-21T00:00:00Z", "drop_pool": "discontinued" },
+
+  { "id": "dreams-and-nightmares-case", "name": "Dreams & Nightmares Case", "release_date": "2022-01-20T00:00:00Z", "drop_pool": "active" },
+  { "id": "recoil-case", "name": "Recoil Case", "release_date": "2022-07-01T00:00:00Z", "drop_pool": "active" },
+  { "id": "revolution-case", "name": "Revolution Case", "release_date": "2023-02-09T00:00:00Z", "drop_pool": "active" },
+
+  { "id": "kilowatt-case", "name": "Kilowatt Case", "release_date": "2024-02-06T00:00:00Z", "drop_pool": "active" },
+  { "id": "gallery-case", "name": "Gallery Case", "release_date": "2024-10-02T00:00:00Z", "drop_pool": "active" },
+  { "id": "fever-case", "name": "Fever Case", "release_date": "2025-02-07T00:00:00Z", "drop_pool": "active" }
+]
