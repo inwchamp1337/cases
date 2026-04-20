@@ -8,6 +8,25 @@ def parse_price(price_str):
     # "$45.47" -> 45.47
     return float(price_str.replace("$", "").replace(",", ""))
 
+def parse_steam_date(date_str):
+    """Convert Steam date format 'Jan 09 2015 01: +0' to ISO format"""
+    if not date_str or date_str == "N/A":
+        return datetime.utcnow().isoformat()
+    
+    try:
+        # Try ISO format first
+        if "T" in date_str:
+            return date_str
+        
+        # Try Steam format: "Jan 09 2015 01: +0"
+        # Remove timezone suffix
+        date_clean = date_str.split("+")[0].split("-")[0].strip()
+        dt = datetime.strptime(date_clean, "%b %d %Y %H:")
+        return dt.isoformat()
+    except:
+        # Fallback to current time
+        return datetime.utcnow().isoformat()
+
 def get_price(item):
     url = "https://steamcommunity.com/market/priceoverview/"
     
@@ -23,80 +42,98 @@ def get_price(item):
 
     for attempt in range(1, 4):  # Retry up to 3 times
         try:
-            print(f"Attempt {attempt}: Fetching price for {item['name']}...")
+            print(f"  Attempt {attempt}: Fetching price for {item['name']}...")
             res = requests.get(url, params=params, headers=headers, timeout=10)
             res.raise_for_status()  # Raise HTTPError for bad responses
             data = res.json()
 
             if data.get("success"):
-                print(f"Success: Retrieved price for {item['name']}")
+                print(f"  ✓ Retrieved price for {item['name']}")
                 return {
                     "date": datetime.utcnow().isoformat(),
                     "price": parse_price(data["lowest_price"]),
                     "volume": int(data["volume"].replace(",", ""))
                 }
             else:
-                print(f"Warning: API response indicates failure for {item['name']}")
+                print(f"  ✗ API response indicates failure for {item['name']}")
         except requests.exceptions.RequestException as e:
-            print(f"Error: Request failed for {item['name']} - {e}")
+            print(f"  ✗ Request failed for {item['name']} - {e}")
         except ValueError as e:
-            print(f"Error: Failed to parse response for {item['name']} - {e}")
+            print(f"  ✗ Failed to parse response for {item['name']} - {e}")
 
-        time.sleep(2)  # Wait before retrying
+        time.sleep(1)  # Wait before retrying
 
-    print(f"Failed: Could not retrieve price for {item['name']} after 3 attempts")
+    print(f"  ✗ Failed to retrieve price after 3 attempts")
     return None
 
 
 def save_price(item):
-    print(f"Saving price data for {item['name']}...")
     result = get_price(item)
     if not result:
-        print(f"Failed to save price for {item['name']}: No data available")
-        return
+        return False
 
     os.makedirs("data", exist_ok=True)
     path = f"data/{item['id']}.json"
 
     try:
-        with open(path, "r") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print(f"Info: No existing data file for {item['name']}, creating new one")
-        data = []
-    except json.JSONDecodeError as e:
-        print(f"Error: Failed to read existing data for {item['name']} - {e}")
-        data = []
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                data = json.load(f)
+        else:
+            data = []
 
-    data.append(result)
+        data.append(result)
 
-    try:
         with open(path, "w") as f:
             json.dump(data, f, indent=2)
-        print(f"Success: Saved price data for {item['name']}")
-    except IOError as e:
-        print(f"Error: Failed to write data for {item['name']} - {e}")
+        
+        return True
+    except (IOError, json.JSONDecodeError) as e:
+        print(f"  ✗ File error: {e}")
+        return False
 
 
 def update_prices():
+    print("=" * 70)
     print("Starting price update process...")
+    print("=" * 70)
+    
     try:
         with open("cases.json", "r") as f:
             cases = json.load(f)
-        print("Loaded cases.json successfully")
+        print(f"✓ Loaded {len(cases)} cases from cases.json\n")
     except FileNotFoundError:
-        print("Error: cases.json not found. Please ensure the file exists.")
+        print("✗ cases.json not found. Please ensure the file exists.")
         return
     except json.JSONDecodeError as e:
-        print(f"Error: Failed to parse cases.json - {e}")
+        print(f"✗ Failed to parse cases.json - {e}")
         return
 
-    for case in cases:
-        print(f"Processing case: {case['name']} ({case['id']})")
-        save_price(case)
-        time.sleep(1.5)  # Prevent being blocked by the server
+    success_cases = []
+    failed_cases = []
 
-    print("Price update process completed.")
+    for i, case in enumerate(cases, 1):
+        print(f"[{i}/{len(cases)}] Processing: {case['name']} ({case['id']})")
+        
+        if save_price(case):
+            success_cases.append(case['name'])
+        else:
+            failed_cases.append(case['name'])
+        
+        time.sleep(1)  # Prevent being blocked by the server
+
+    # Summary
+    print("\n" + "=" * 70)
+    print(f"Price update process completed!")
+    print(f"✓ Successful: {len(success_cases)}/{len(cases)}")
+    print(f"✗ Failed: {len(failed_cases)}/{len(cases)}")
+    
+    if failed_cases:
+        print(f"\nFailed cases:")
+        for case in failed_cases:
+            print(f"  - {case}")
+    
+    print("=" * 70)
 
 
 if __name__ == "__main__":
